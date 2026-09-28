@@ -1,0 +1,20 @@
+[Unit]
+Description=Smart Key Telegram remote unlock/lock
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=pi
+Group=pi
+WorkingDirectory=/home/pi/kiosk
+EnvironmentFile=-/home/pi/kiosk/.env
+Environment=PYTHONPATH=/home/pi/kiosk
+ExecStart=/usr/bin/python3 /home/pi/smartkey_remote/telegram_remote.py
+Restart=on-failure
+RestartSec=8
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,26 @@
+# ============================================================
+# Tuỳ chọn: portal cấu hình WiFi khi Pi chưa online
+# Cần binary: /usr/local/bin/wifi-connect
+#   https://github.com/balena-io/wifi-connect/releases
+#
+# Lưu ý: oneshot — khi user nhập WiFi xong process thoát.
+# Có thể kết hợp script kiểm tra ping trước khi chạy.
+# ============================================================
+
+[Unit]
+Description=Smart Key WiFi Connect captive portal
+After=NetworkManager.service
+Wants=NetworkManager.service
+# Không chạy nếu đã có default route (tuỳ script wrapper)
+ConditionPathExists=/usr/local/bin/wifi-connect
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/local/bin/wifi-connect --portal-ssid SmartKey-Setup --portal-listening-port 80
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=smartkey-wifi
+
+[Install]
+WantedBy=multi-user.target

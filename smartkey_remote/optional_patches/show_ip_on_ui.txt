@@ -1,0 +1,65 @@
+================================================================================
+C — Hiển thị IP WiFi trên UI kiosk (TÙY CHỌN)
+Không bắt buộc. Có thể chỉ dùng lệnh Telegram /ip.
+================================================================================
+
+Mở file: kiosk_ui_v8.py
+
+------------------------------------------------------------------------
+1) Thêm hàm helper (đặt GẦN ĐẦU file, sau các import, trước class KioskApp)
+------------------------------------------------------------------------
+
+def _local_ip_str():
+    import socket
+    try:
+        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        s.settimeout(0.2)
+        s.connect(("8.8.8.8", 80))
+        ip = s.getsockname()[0]
+        s.close()
+        return ip
+    except Exception:
+        return "—"
+
+
+------------------------------------------------------------------------
+2) Trong KioskApp.__init__ (hoặc chỗ tạo header/clock), SAU khi có self.clock_label
+   Tìm dòng kiểu: self.clock_label = ...
+   Thêm NGAY SAU đó:
+------------------------------------------------------------------------
+
+        self.ip_label = tk.Label(
+            self.header_frame,   # đổi thành frame header thật của bạn nếu tên khác
+            text="IP: " + _local_ip_str(),
+            font=("Arial", 11),
+            bg=BG, fg=DIM,
+        )
+        self.ip_label.pack(side="right", padx=8)
+
+
+------------------------------------------------------------------------
+3) Làm mới IP mỗi 30 giây — trong _update_clock (hoặc tạo job riêng)
+   Cuối hàm _update_clock, trước khi after(1000, ...), thêm:
+------------------------------------------------------------------------
+
+        try:
+            if hasattr(self, "ip_label") and self.ip_label.winfo_exists():
+                # cập nhật mỗi ~30 lần tick đồng hồ
+                if not hasattr(self, "_ip_tick"):
+                    self._ip_tick = 0
+                self._ip_tick += 1
+                if self._ip_tick >= 30:
+                    self._ip_tick = 0
+                    self.ip_label.config(text="IP: " + _local_ip_str())
+        except Exception:
+            pass
+
+
+------------------------------------------------------------------------
+Lưu ý tên widget
+------------------------------------------------------------------------
+Trong kiosk_ui_v8.py tên frame header có thể là:
+  self.header_frame / self.top_bar / self.status_bar
+Hãy pack ip_label vào frame ĐANG chứa clock_label (cùng hàng).
+
+Nếu không muốn sửa UI: bỏ qua file này, dùng /ip trên Telegram.

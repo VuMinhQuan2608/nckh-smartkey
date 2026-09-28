@@ -1,0 +1,849 @@
+[
+  {
+    "time": "26/09/2026 18:49:53",
+    "identifier": "kiosk",
+    "method": "manual",
+    "result": "THÀNH CÔNG",
+    "note": "Mở khóa [gia lap]"
+  },
+  {
+    "time": "26/09/2026 18:49:52",
+    "identifier": "Hệ thống",
+    "method": "auto-lock",
+    "result": "THÀNH CÔNG",
+    "note": "Tự khóa sau 90s"
+  },
+  {
+    "time": "26/09/2026 18:49:15",
+    "identifier": "?",
+    "method": "pin",
+    "result": "KHÓA TẠM",
+    "note": "Sai 5 lần"
+  },
+  {
+    "time": "26/09/2026 18:49:13",
+    "identifier": "?",
+    "method": "pin",
+    "result": "THẤT BẠI",
+    "note": "Còn 1 lần"
+  },
+  {
+    "time": "26/09/2026 18:49:11",
+    "identifier": "?",
+    "method": "pin",
+    "result": "THẤT BẠI",
+    "note": "Còn 2 lần"
+  },
+  {
+    "time": "26/09/2026 18:49:06",
+    "identifier": "?",
+    "method": "pin",
+    "result": "THẤT BẠI",
+    "note": "Còn 3 lần"
+  },
+  {
+    "time": "26/09/2026 18:49:03",
+    "identifier": "?",
+    "method": "pin",
+    "result": "THẤT BẠI",
+    "note": "Còn 4 lần"
+  },
+  {
+    "time": "26/09/2026 18:48:23",
+    "identifier": "Vũ Minh Quân",
+    "method": "face",
+    "result": "THÀNH CÔNG",
+    "note": "score=0.831"
+  },
+  {
+    "time": "26/09/2026 18:48:22",
+    "identifier": "Vũ Minh Quân",
+    "method": "face",
+    "result": "THÀNH CÔNG",
+    "note": "Mở khóa [gia lap]"
+  },
+  {
+    "time": "24/09/2026 22:31:17",
+    "identifier": "admin",
+    "method": "pin",
+    "result": "THÀNH CÔNG",
+    "note": "Mở khóa [gia lap]"
+  },
+  {
+    "time": "24/09/2026 22:31:16",
+    "identifier": "admin",
+    "method": "pin",
+    "result": "THÀNH CÔNG",
+    "note": "PIN kiosk"
+  },
+  {
+    "time": "24/09/2026 22:30:56",
+    "identifier": "Vũ Minh Quân",
+    "method": "face",
+    "result": "THÀNH CÔNG",
+    "note": "score=0.856"
+  },
+  {
+    "time": "24/09/2026 22:30:55",
+    "identifier": "Vũ Minh Quân",
+    "method": "face",
+    "result": "THÀNH CÔNG",
+    "note": "Mở khóa [gia lap]"
+  },
+  {
+    "time": "24/09/2026 22:30:15",
+    "identifier": "tg:7426389427",
+    "method": "telegram",
+    "result": "THÀNH CÔNG",
+    "note": "Mở khóa [gia lap]"
+  },
+  {
+    "time": "24/09/2026 09:56:03",
+    "identifier": "Vũ Minh Quân",
+    "method": "face",
+    "result": "THÀNH CÔNG",
+    "note": "score=0.853"
+  },
+  {
+    "time": "24/09/2026 09:56:02",
+    "identifier": "Vũ Minh Quân",
+    "method": "face",
+    "result": "THÀNH CÔNG",
+    "note": "Mở khóa [gia lap]"
+  },
+  {
+    "time": "24/09/2026 09:53:43",
+    "identifier": "Hệ thống",
+    "method": "auto-lock",
+    "result": "THÀNH CÔNG",
+    "note": "Tự khóa sau 90s"
+  },
+  {
+    "time": "24/09/2026 09:52:13",
+    "identifier": "admin",
+    "method": "fingerprint",
+    "result": "THÀNH CÔNG",
+    "note": "Mở khóa [gia lap]"
+  },
+  {
+    "time": "24/09/2026 09:52:12",
+    "identifier": "admin",
+    "method": "fingerprint",
+    "result": "THÀNH CÔNG",
+    "note": "FP ESP32/kiosk"
+  },
+  {
+    "time": "24/09/2026 09:52:11",
+    "identifier": "admin",
+    "method": "fingerprint",
+    "result": "THÀNH CÔNG",
+    "note": "Mở khóa [gia lap]"
+  },
+  {
+    "time": "24/09/2026 09:52:10",
+    "identifier": "admin",
+    "method": "fingerprint",
+    "result": "THÀNH CÔNG",
+    "note": "FP ESP32/kiosk"
+  },
+  {
+    "time": "24/09/2026 09:51:29",
+    "identifier": "admin",
+    "method": "pin",
+    "result": "THÀNH CÔNG",
+    "note": "Mở khóa [gia lap]"
+  },
+  {
+    "time": "24/09/2026 09:51:28",
+    "identifier": "admin",
+    "method": "pin",
+    "result": "THÀNH CÔNG",
+    "note": "PIN kiosk"
+  },
+  {
+    "time": "24/09/2026 09:51:12",
+    "identifier": "Vũ Minh Quân",
+    "method": "face",
+    "result": "THÀNH CÔNG",
+    "note": "score=0.862"
+  },
+  {
+    "time": "24/09/2026 09:51:11",
+    "identifier": "Vũ Minh Quân",
+    "method": "face",
+    "result": "THÀNH CÔNG",
+    "note": "Mở khóa [gia lap]"
+  },
+  {
+    "time": "24/09/2026 09:33:12",
+    "identifier": "Vũ Minh Quân",
+    "method": "face",
+    "result": "THÀNH CÔNG",
+    "note": "score=0.796"
+  },
+  {
+    "time": "24/09/2026 09:33:11",
+    "identifier": "Vũ Minh Quân",
+    "method": "face",
+    "result": "THÀNH CÔNG",
+    "note": "Mở khóa [gia lap]"
+  },
+  {
+    "time": "24/09/2026 09:24:02",
+    "identifier": "admin",
+    "method": "pin",
+    "result": "THÀNH CÔNG",
+    "note": "Mở khóa [gia lap]"
+  },
+  {
+    "time": "24/09/2026 09:24:01",
+    "identifier": "admin",
+    "method": "pin",
+    "result": "THÀNH CÔNG",
+    "note": "PIN kiosk"
+  },
+  {
+    "time": "24/09/2026 09:23:24",
+    "identifier": "Vũ Minh Quân",
+    "method": "face",
+    "result": "THÀNH CÔNG",
+    "note": "score=0.716"
+  },
+  {
+    "time": "24/09/2026 09:23:22",
+    "identifier": "Vũ Minh Quân",
+    "method": "face",
+    "result": "THÀNH CÔNG",
+    "note": "Mở khóa [gia lap]"
+  },
+  {
+    "time": "23/09/2026 22:17:38",
+    "identifier": "kiosk",
+    "method": "manual",
+    "result": "THÀNH CÔNG",
+    "note": "Khóa cửa"
+  },
+  {
+    "time": "23/09/2026 22:16:57",
+    "identifier": "kiosk",
+    "method": "manual",
+    "result": "THÀNH CÔNG",
+    "note": "Mở khóa [gia lap]"
+  },
+  {
+    "time": "23/09/2026 22:12:55",
+    "identifier": "admin",
+    "method": "pin",
+    "result": "THÀNH CÔNG",
+    "note": "Mở khóa [gia lap]"
+  },
+  {
+    "time": "23/09/2026 22:12:53",
+    "identifier": "admin",
+    "method": "pin",
+    "result": "THÀNH CÔNG",
+    "note": "PIN kiosk"
+  },
+  {
+    "time": "23/09/2026 22:12:43",
+    "identifier": "tg:7426389427",
+    "method": "telegram",
+    "result": "THÀNH CÔNG",
+    "note": "Mở khóa [gia lap]"
+  },
+  {
+    "time": "23/09/2026 22:05:10",
+    "identifier": "kiosk",
+    "method": "doorbell",
+    "result": "THÀNH CÔNG",
+    "note": "Bấm chuông"
+  },
+  {
+    "time": "23/09/2026 22:04:59",
+    "identifier": "Vũ Minh Quân",
+    "method": "face",
+    "result": "THÀNH CÔNG",
+    "note": "score=0.905"
+  },
+  {
+    "time": "23/09/2026 22:04:58",
+    "identifier": "Vũ Minh Quân",
+    "method": "face",
+    "result": "THÀNH CÔNG",
+    "note": "Mở khóa [gia lap]"
+  },
+  {
+    "time": "23/09/2026 22:03:36",
+    "identifier": "admin",
+    "method": "pin",
+    "result": "THÀNH CÔNG",
+    "note": "Mở khóa [gia lap]"
+  },
+  {
+    "time": "23/09/2026 22:03:35",
+    "identifier": "admin",
+    "method": "pin",
+    "result": "THÀNH CÔNG",
+    "note": "PIN kiosk"
+  },
+  {
+    "time": "23/09/2026 20:25:00",
+    "identifier": "admin",
+    "method": "pin",
+    "result": "THÀNH CÔNG",
+    "note": "Mở khóa [gia lap]"
+  },
+  {
+    "time": "23/09/2026 20:24:59",
+    "identifier": "admin",
+    "method": "pin",
+    "result": "THÀNH CÔNG",
+    "note": "PIN kiosk"
+  },
+  {
+    "time": "23/09/2026 20:21:59",
+    "identifier": "Hệ thống",
+    "method": "auto-lock",
+    "result": "THÀNH CÔNG",
+    "note": "Tự khóa sau 90s"
+  },
+  {
+    "time": "23/09/2026 20:20:29",
+    "identifier": "kiosk",
+    "method": "manual",
+    "result": "THÀNH CÔNG",
+    "note": "Mở khóa [gia lap]"
+  },
+  {
+    "time": "23/09/2026 20:20:10",
+    "identifier": "kiosk",
+    "method": "doorbell",
+    "result": "THÀNH CÔNG",
+    "note": "Bấm chuông"
+  },
+  {
+    "time": "22/09/2026 22:51:21",
+    "identifier": "tg:7426389427",
+    "method": "telegram",
+    "result": "THÀNH CÔNG",
+    "note": "Mở khóa [gia lap]"
+  },
+  {
+    "time": "22/09/2026 22:48:13",
+    "identifier": "Hệ thống",
+    "method": "auto-lock",
+    "result": "THÀNH CÔNG",
+    "note": "Tự khóa sau 90s"
+  },
+  {
+    "time": "22/09/2026 22:46:43",
+    "identifier": "tg:7426389427",
+    "method": "telegram",
+    "result": "THÀNH CÔNG",
+    "note": "Mở khóa"
+  },
+  {
+    "time": "22/09/2026 22:41:29",
+    "identifier": "Hệ thống",
+    "method": "auto-lock",
+    "result": "THÀNH CÔNG",
+    "note": "Tự khóa sau 90s"
+  },
+  {
+    "time": "22/09/2026 22:39:59",
+    "identifier": "admin",
+    "method": "pin",
+    "result": "THÀNH CÔNG",
+    "note": "Mở khóa"
+  },
+  {
+    "time": "22/09/2026 22:39:57",
+    "identifier": "admin",
+    "method": "pin",
+    "result": "THÀNH CÔNG",
+    "note": "PIN kiosk"
+  },
+  {
+    "time": "22/09/2026 22:38:53",
+    "identifier": "admin",
+    "method": "doorbell",
+    "result": "THÀNH CÔNG",
+    "note": "Bấm chuông"
+  },
+  {
+    "time": "22/09/2026 22:38:47",
+    "identifier": "admin",
+    "method": "safety_bolt",
+    "result": "THÀNH CÔNG",
+    "note": "Chốt an toàn TẮT"
+  },
+  {
+    "time": "22/09/2026 22:38:46",
+    "identifier": "admin",
+    "method": "safety_bolt",
+    "result": "THÀNH CÔNG",
+    "note": "Chốt an toàn BẬT"
+  },
+  {
+    "time": "22/09/2026 22:38:40",
+    "identifier": "admin",
+    "method": "pin",
+    "result": "THÀNH CÔNG",
+    "note": "Mở khóa"
+  },
+  {
+    "time": "22/09/2026 22:38:39",
+    "identifier": "admin",
+    "method": "pin",
+    "result": "THÀNH CÔNG",
+    "note": "PIN kiosk"
+  },
+  {
+    "time": "22/09/2026 22:24:24",
+    "identifier": "kiosk",
+    "method": "manual",
+    "result": "THÀNH CÔNG",
+    "note": "Mở khóa"
+  },
+  {
+    "time": "22/09/2026 22:23:55",
+    "identifier": "admin",
+    "method": "pin",
+    "result": "THÀNH CÔNG",
+    "note": "Mở khóa"
+  },
+  {
+    "time": "22/09/2026 22:23:54",
+    "identifier": "admin",
+    "method": "pin",
+    "result": "THÀNH CÔNG",
+    "note": "PIN kiosk"
+  },
+  {
+    "time": "22/09/2026 22:23:46",
+    "identifier": "admin",
+    "method": "pin",
+    "result": "THAY ĐỔI",
+    "note": "Đổi PIN"
+  },
+  {
+    "time": "22/09/2026 22:23:32",
+    "identifier": "admin",
+    "method": "pin",
+    "result": "THÀNH CÔNG",
+    "note": "Mở khóa"
+  },
+  {
+    "time": "22/09/2026 22:23:31",
+    "identifier": "admin",
+    "method": "pin",
+    "result": "THÀNH CÔNG",
+    "note": "PIN kiosk"
+  },
+  {
+    "time": "22/09/2026 22:14:25",
+    "identifier": "kiosk",
+    "method": "manual",
+    "result": "THÀNH CÔNG",
+    "note": "Khóa cửa"
+  },
+  {
+    "time": "22/09/2026 22:14:07",
+    "identifier": "kiosk",
+    "method": "manual",
+    "result": "THÀNH CÔNG",
+    "note": "Khóa cửa"
+  },
+  {
+    "time": "22/09/2026 22:13:35",
+    "identifier": "kiosk",
+    "method": "manual",
+    "result": "THÀNH CÔNG",
+    "note": "Mở khóa"
+  },
+  {
+    "time": "22/09/2026 22:13:23",
+    "identifier": "?",
+    "method": "mfa/telegram_otp",
+    "result": "THẤT BẠI",
+    "note": ""
+  },
+  {
+    "time": "22/09/2026 22:12:37",
+    "identifier": "admin",
+    "method": "fingerprint",
+    "result": "THÀNH CÔNG",
+    "note": "Mở khóa"
+  },
+  {
+    "time": "22/09/2026 22:12:28",
+    "identifier": "admin",
+    "method": "fingerprint",
+    "result": "THÀNH CÔNG",
+    "note": "Mở khóa"
+  },
+  {
+    "time": "22/09/2026 22:12:27",
+    "identifier": "admin",
+    "method": "fingerprint",
+    "result": "THÀNH CÔNG",
+    "note": "FP kiosk"
+  },
+  {
+    "time": "22/09/2026 22:12:25",
+    "identifier": "admin",
+    "method": "fingerprint",
+    "result": "THÀNH CÔNG",
+    "note": "FP kiosk"
+  },
+  {
+    "time": "22/09/2026 21:57:45",
+    "identifier": "admin",
+    "method": "fingerprint",
+    "result": "THÀNH CÔNG",
+    "note": "Mở khóa"
+  },
+  {
+    "time": "22/09/2026 21:57:43",
+    "identifier": "admin",
+    "method": "fingerprint",
+    "result": "THÀNH CÔNG",
+    "note": "FP kiosk"
+  },
+  {
+    "time": "22/09/2026 21:57:19",
+    "identifier": "admin",
+    "method": "pin",
+    "result": "THÀNH CÔNG",
+    "note": "Mở khóa"
+  },
+  {
+    "time": "22/09/2026 21:57:18",
+    "identifier": "admin",
+    "method": "pin",
+    "result": "THÀNH CÔNG",
+    "note": "PIN kiosk"
+  },
+  {
+    "time": "22/09/2026 21:51:25",
+    "identifier": "kiosk",
+    "method": "manual",
+    "result": "THÀNH CÔNG",
+    "note": "Khóa cửa"
+  },
+  {
+    "time": "22/09/2026 21:51:03",
+    "identifier": "admin",
+    "method": "fingerprint",
+    "result": "THÀNH CÔNG",
+    "note": "Mở khóa"
+  },
+  {
+    "time": "22/09/2026 21:51:01",
+    "identifier": "admin",
+    "method": "fingerprint",
+    "result": "THÀNH CÔNG",
+    "note": "FP kiosk"
+  },
+  {
+    "time": "22/09/2026 21:51:01",
+    "identifier": "admin",
+    "method": "fingerprint",
+    "result": "THÀNH CÔNG",
+    "note": "Mở khóa"
+  },
+  {
+    "time": "22/09/2026 21:51:00",
+    "identifier": "admin",
+    "method": "fingerprint",
+    "result": "THÀNH CÔNG",
+    "note": "FP kiosk"
+  },
+  {
+    "time": "22/09/2026 21:47:07",
+    "identifier": "kiosk",
+    "method": "manual",
+    "result": "THÀNH CÔNG",
+    "note": "Mở khóa"
+  },
+  {
+    "time": "22/09/2026 21:22:44",
+    "identifier": "kiosk",
+    "method": "manual",
+    "result": "THÀNH CÔNG",
+    "note": "Mở khóa"
+  },
+  {
+    "time": "22/09/2026 21:22:14",
+    "identifier": "admin",
+    "method": "fingerprint",
+    "result": "THÀNH CÔNG",
+    "note": "Mở khóa"
+  },
+  {
+    "time": "22/09/2026 21:22:14",
+    "identifier": "admin",
+    "method": "fingerprint",
+    "result": "THÀNH CÔNG",
+    "note": "FP kiosk"
+  },
+  {
+    "time": "22/09/2026 21:18:01",
+    "identifier": "Hệ thống",
+    "method": "auto-lock",
+    "result": "THÀNH CÔNG",
+    "note": "Tự khóa sau 90s"
+  },
+  {
+    "time": "22/09/2026 21:16:31",
+    "identifier": "kiosk",
+    "method": "manual",
+    "result": "THÀNH CÔNG",
+    "note": "Mở khóa"
+  },
+  {
+    "time": "22/09/2026 20:53:01",
+    "identifier": "admin",
+    "method": "fingerprint",
+    "result": "THÀNH CÔNG",
+    "note": "Mở khóa"
+  },
+  {
+    "time": "22/09/2026 20:53:01",
+    "identifier": "admin",
+    "method": "fingerprint",
+    "result": "THÀNH CÔNG",
+    "note": "FP kiosk"
+  },
+  {
+    "time": "22/09/2026 20:50:33",
+    "identifier": "Hệ thống",
+    "method": "auto-lock",
+    "result": "THÀNH CÔNG",
+    "note": "Tự khóa sau 90s"
+  },
+  {
+    "time": "22/09/2026 20:49:03",
+    "identifier": "admin",
+    "method": "fingerprint",
+    "result": "THÀNH CÔNG",
+    "note": "Mở khóa"
+  },
+  {
+    "time": "22/09/2026 20:49:03",
+    "identifier": "admin",
+    "method": "fingerprint",
+    "result": "THÀNH CÔNG",
+    "note": "FP kiosk"
+  },
+  {
+    "time": "22/09/2026 10:08:05",
+    "identifier": "admin",
+    "method": "fingerprint",
+    "result": "THÀNH CÔNG",
+    "note": "Mở khóa"
+  },
+  {
+    "time": "22/09/2026 10:08:05",
+    "identifier": "admin",
+    "method": "fingerprint",
+    "result": "THÀNH CÔNG",
+    "note": "FP kiosk"
+  },
+  {
+    "time": "22/09/2026 10:07:55",
+    "identifier": "admin",
+    "method": "pin",
+    "result": "THÀNH CÔNG",
+    "note": "Mở khóa"
+  },
+  {
+    "time": "22/09/2026 10:07:55",
+    "identifier": "admin",
+    "method": "pin",
+    "result": "THÀNH CÔNG",
+    "note": "PIN kiosk"
+  },
+  {
+    "time": "22/09/2026 09:54:55",
+    "identifier": "kiosk",
+    "method": "manual",
+    "result": "THÀNH CÔNG",
+    "note": "Khóa cửa"
+  },
+  {
+    "time": "22/09/2026 09:54:51",
+    "identifier": "admin",
+    "method": "pin",
+    "result": "THÀNH CÔNG",
+    "note": "Mở khóa"
+  },
+  {
+    "time": "22/09/2026 09:54:51",
+    "identifier": "admin",
+    "method": "pin",
+    "result": "THÀNH CÔNG",
+    "note": "PIN kiosk"
+  },
+  {
+    "time": "22/09/2026 09:54:34",
+    "identifier": "kiosk",
+    "method": "settings",
+    "result": "THÀNH CÔNG",
+    "note": "Đổi access_mode → single"
+  },
+  {
+    "time": "21/09/2026 21:44:08",
+    "identifier": "admin",
+    "method": "pin",
+    "result": "THÀNH CÔNG",
+    "note": "Kiosk local"
+  },
+  {
+    "time": "21/09/2026 21:44:05",
+    "identifier": "?",
+    "method": "pin",
+    "result": "THẤT BẠI",
+    "note": "Sai PIN (còn 4)"
+  },
+  {
+    "time": "21/09/2026 21:43:47",
+    "identifier": "admin",
+    "method": "face",
+    "result": "THÀNH CÔNG",
+    "note": "Cooldown diện (cooldown) score=0.618"
+  },
+  {
+    "time": "21/09/2026 21:43:46",
+    "identifier": "admin",
+    "method": "face",
+    "result": "THÀNH CÔNG",
+    "note": "Local AI score=0.603"
+  },
+  {
+    "time": "16/09/2026 21:33:45",
+    "identifier": "admin",
+    "method": "pin",
+    "result": "THÀNH CÔNG",
+    "note": "Kiosk local"
+  },
+  {
+    "time": "16/09/2026 21:27:29",
+    "identifier": "Hệ thống",
+    "method": "auto-lock",
+    "result": "THÀNH CÔNG",
+    "note": "Tự khóa sau 90s"
+  },
+  {
+    "time": "16/09/2026 21:25:59",
+    "identifier": "admin",
+    "method": "fingerprint",
+    "result": "THÀNH CÔNG",
+    "note": "Kiosk local"
+  },
+  {
+    "time": "16/09/2026 21:25:57",
+    "identifier": "?",
+    "method": "fingerprint",
+    "result": "THẤT BẠI",
+    "note": "ID: 11"
+  },
+  {
+    "time": "16/09/2026 21:24:27",
+    "identifier": "admin",
+    "method": "pin",
+    "result": "THÀNH CÔNG",
+    "note": "Kiosk local"
+  },
+  {
+    "time": "16/09/2026 20:56:03",
+    "identifier": "kiosk",
+    "method": "access_mode",
+    "result": "THAY ĐỔI",
+    "note": "Chế độ: Đăng nhập 1 lần"
+  },
+  {
+    "time": "16/09/2026 20:55:50",
+    "identifier": "kiosk",
+    "method": "access_mode",
+    "result": "THAY ĐỔI",
+    "note": "Chế độ: Không cần đăng nhập"
+  },
+  {
+    "time": "16/09/2026 20:52:40",
+    "identifier": "admin",
+    "method": "fingerprint",
+    "result": "THÀNH CÔNG",
+    "note": "Kiosk local"
+  },
+  {
+    "time": "16/09/2026 20:52:29",
+    "identifier": "admin",
+    "method": "fingerprint",
+    "result": "THÀNH CÔNG",
+    "note": "Kiosk local"
+  },
+  {
+    "time": "16/09/2026 20:52:21",
+    "identifier": "otp_user",
+    "method": "access_mode",
+    "result": "THAY ĐỔI",
+    "note": "Chế độ: Đăng nhập 1 lần"
+  },
+  {
+    "time": "16/09/2026 20:52:03",
+    "identifier": "otp_user",
+    "method": "access_mode",
+    "result": "THAY ĐỔI",
+    "note": "Chế độ: Không cần đăng nhập"
+  },
+  {
+    "time": "16/09/2026 20:52:02",
+    "identifier": "otp_user",
+    "method": "access_mode",
+    "result": "THAY ĐỔI",
+    "note": "Chế độ: Không cần đăng nhập"
+  },
+  {
+    "time": "16/09/2026 20:51:54",
+    "identifier": "otp_user",
+    "method": "mfa",
+    "result": "THÀNH CÔNG",
+    "note": "MFA local: telegram_otp + pin"
+  },
+  {
+    "time": "16/09/2026 20:51:44",
+    "identifier": "admin",
+    "method": "telegram_otp",
+    "result": "ĐÃ GỬI",
+    "note": "OTP từ Kiosk local"
+  },
+  {
+    "time": "16/09/2026 20:50:38",
+    "identifier": "?",
+    "method": "mfa_pin",
+    "result": "THẤT BẠI",
+    "note": "Sai mã PIN."
+  },
+  {
+    "time": "16/09/2026 20:50:14",
+    "identifier": "?",
+    "method": "mfa_pin",
+    "result": "THẤT BẠI",
+    "note": "Sai mã PIN."
+  },
+  {
+    "time": "16/09/2026 20:50:09",
+    "identifier": "?",
+    "method": "mfa_pin",
+    "result": "THẤT BẠI",
+    "note": "Sai mã PIN."
+  },
+  {
+    "time": "16/09/2026 20:48:40",
+    "identifier": "admin",
+    "method": "pin",
+    "result": "THÀNH CÔNG",
+    "note": "Kiosk local"
+  }
+]

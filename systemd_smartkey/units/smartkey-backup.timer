@@ -1,0 +1,12 @@
+# Backup kiosk_data mỗi ngày 03:15
+
+[Unit]
+Description=Timer backup Smart Key kiosk_data daily
+
+[Timer]
+OnCalendar=*-*-* 03:15:00
+Persistent=true
+RandomizedDelaySec=300
+
+[Install]
+WantedBy=timers.target

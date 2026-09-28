@@ -1,0 +1,64 @@
+# ============================================================
+# Smart Key — Kiosk UI (Tkinter trên màn hình Pi)
+# Cài: sudo cp smartkey-kiosk.service /etc/systemd/system/
+#      sudo systemctl daemon-reload
+#      sudo systemctl enable --now smartkey-kiosk
+#
+# CHỈNH các path User/WorkingDirectory/EnvironmentFile cho đúng máy.
+# ============================================================
+
+[Unit]
+Description=Smart Key Kiosk UI (standalone)
+Documentation=file:///home/pi/kiosk
+# Đợi mạng (Telegram / NTP); không chặn nếu offline quá lâu
+After=network-online.target graphical.target
+Wants=network-online.target
+# Nếu dùng lightdm/gdm: sau display manager
+After=lightdm.service
+# Không phụ thuộc bắt buộc display manager (headless vẫn start rồi fail rõ)
+
+[Service]
+Type=simple
+User=pi
+Group=pi
+
+# Thư mục code kiosk
+WorkingDirectory=/home/pi/kiosk
+
+# Biến môi trường từ .env (MQTT, Telegram, GPIO, FACE_...)
+EnvironmentFile=-/home/pi/kiosk/.env
+
+# Python tìm module local
+Environment=PYTHONPATH=/home/pi/kiosk
+Environment=PYTHONUNBUFFERED=1
+
+# Hiển thị GUI trên màn Pi (X11)
+Environment=DISPLAY=:0
+Environment=XAUTHORITY=/home/pi/.Xauthority
+# Wayland (Bookworm đôi khi): bỏ comment nếu dùng wayland
+# Environment=WAYLAND_DISPLAY=wayland-0
+# Environment=XDG_RUNTIME_DIR=/run/user/1000
+
+# Tắt log OpenCV ồn
+Environment=OPENCV_LOG_LEVEL=ERROR
+
+ExecStartPre=/bin/sleep 3
+ExecStart=/usr/bin/python3 /home/pi/kiosk/kiosk_ui_v8.py
+
+# Tự chạy lại nếu crash
+Restart=on-failure
+RestartSec=5
+StartLimitIntervalSec=120
+StartLimitBurst=5
+
+# Log vào journal
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=smartkey-kiosk
+
+# Tài nguyên (tuỳ chỉnh nếu Pi 1GB RAM)
+# MemoryMax=512M
+
+[Install]
+# Boot vào desktop → graphical.target
+WantedBy=graphical.target

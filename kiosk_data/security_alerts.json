@@ -1,0 +1,138 @@
+[
+  {
+    "id": 3355894,
+    "time": "26/09/2026 18:49:15",
+    "type": "Dò mã PIN",
+    "severity": "warning",
+    "message": "Sai PIN 5 lần — khóa 60s",
+    "status": "new"
+  },
+  {
+    "id": 3322758,
+    "time": "26/09/2026 18:48:42",
+    "type": "Đối tượng ở lâu",
+    "severity": "warning",
+    "message": "Vũ Minh Quân đứng trước camera khoảng 20s",
+    "status": "new"
+  },
+  {
+    "id": 8475319,
+    "time": "24/09/2026 09:54:35",
+    "type": "Người lạ đứng lâu",
+    "severity": "critical",
+    "message": "Người lạ đứng trước camera khoảng 20s",
+    "status": "new"
+  },
+  {
+    "id": 8302202,
+    "time": "24/09/2026 09:51:42",
+    "type": "Người lạ đứng lâu",
+    "severity": "critical",
+    "message": "Người lạ đứng trước camera khoảng 20s",
+    "status": "new"
+  },
+  {
+    "id": 7246169,
+    "time": "24/09/2026 09:34:06",
+    "type": "Người lạ đứng lâu",
+    "severity": "critical",
+    "message": "Người lạ đứng trước camera khoảng 24s",
+    "status": "new"
+  },
+  {
+    "id": 7185901,
+    "time": "24/09/2026 09:33:05",
+    "type": "Người lạ đứng lâu",
+    "severity": "critical",
+    "message": "Người lạ đứng trước camera khoảng 20s",
+    "status": "new"
+  },
+  {
+    "id": 5910106,
+    "time": "23/09/2026 22:05:10",
+    "type": "Chuông cửa",
+    "severity": "notice",
+    "message": "Có người bấm chuông (kiosk)",
+    "status": "new"
+  },
+  {
+    "id": 5896420,
+    "time": "23/09/2026 22:04:56",
+    "type": "Đối tượng ở lâu",
+    "severity": "warning",
+    "message": "Vũ Minh Quân đứng trước camera khoảng 21s",
+    "status": "new"
+  },
+  {
+    "id": 5834043,
+    "time": "23/09/2026 22:03:54",
+    "type": "Người lạ đứng lâu",
+    "severity": "critical",
+    "message": "Người lạ đứng trước camera khoảng 20s",
+    "status": "new"
+  },
+  {
+    "id": 9610561,
+    "time": "23/09/2026 20:20:10",
+    "type": "Chuông cửa",
+    "severity": "notice",
+    "message": "Có người bấm chuông (kiosk)",
+    "status": "new"
+  },
+  {
+    "id": 2229161,
+    "time": "22/09/2026 22:50:29",
+    "type": "Người lạ đứng lâu",
+    "severity": "critical",
+    "message": "Người lạ đứng trước camera khoảng 20s",
+    "status": "new"
+  },
+  {
+    "id": 1533239,
+    "time": "22/09/2026 22:38:53",
+    "type": "Chuông cửa",
+    "severity": "notice",
+    "message": "Có người bấm chuông (admin)",
+    "status": "new"
+  },
+  {
+    "id": 9059621,
+    "time": "22/09/2026 21:57:39",
+    "type": "Đối tượng ở lâu",
+    "severity": "critical",
+    "message": "người lạ / chưa nhận diện đứng trước camera khoảng 21s",
+    "status": "new"
+  },
+  {
+    "id": 9038182,
+    "time": "22/09/2026 21:57:18",
+    "type": "Người lạ",
+    "severity": "critical",
+    "message": "Phát hiện khuôn mặt không khớp (score=-1.00)",
+    "status": "new"
+  },
+  {
+    "id": 3,
+    "time": "16/09/2026 20:55:50",
+    "type": "Chế độ mở tự do",
+    "severity": "warning",
+    "message": "Kiosk đang ở chế độ KHÔNG CẦN ĐĂNG NHẬP — ai cũng có thể mở cửa.",
+    "status": "new"
+  },
+  {
+    "id": 2,
+    "time": "16/09/2026 20:52:03",
+    "type": "Chế độ mở tự do",
+    "severity": "warning",
+    "message": "Kiosk đang ở chế độ KHÔNG CẦN ĐĂNG NHẬP — ai cũng có thể mở cửa.",
+    "status": "new"
+  },
+  {
+    "id": 1,
+    "time": "16/09/2026 20:52:02",
+    "type": "Chế độ mở tự do",
+    "severity": "warning",
+    "message": "Kiosk đang ở chế độ KHÔNG CẦN ĐĂNG NHẬP — ai cũng có thể mở cửa.",
+    "status": "new"
+  }
+]

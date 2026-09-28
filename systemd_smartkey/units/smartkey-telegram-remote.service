@@ -1,0 +1,40 @@
+# ============================================================
+# Smart Key — Bot Telegram /unlock /lock /status
+# Chạy nền, không cần màn hình.
+#
+# Mặc định: telegram_remote.py (unlock 1 bước)
+# Có xác nhận YES: đổi ExecStart sang telegram_remote_confirm.py
+# ============================================================
+
+[Unit]
+Description=Smart Key Telegram remote control
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=pi
+Group=pi
+
+WorkingDirectory=/home/pi/kiosk
+EnvironmentFile=-/home/pi/kiosk/.env
+Environment=PYTHONPATH=/home/pi/kiosk
+Environment=PYTHONUNBUFFERED=1
+
+# Bản cơ bản (đổi path nếu đặt script ở smartkey_ops / smartkey_remote)
+ExecStart=/usr/bin/python3 /home/pi/smartkey_remote/telegram_remote.py
+
+# Bản có xác nhận YES — bỏ comment dòng dưới, comment dòng trên:
+# ExecStart=/usr/bin/python3 /home/pi/smartkey_ops/scripts/telegram_remote_confirm.py
+
+Restart=on-failure
+RestartSec=8
+StartLimitIntervalSec=180
+StartLimitBurst=8
+
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=smartkey-tg
+
+[Install]
+WantedBy=multi-user.target

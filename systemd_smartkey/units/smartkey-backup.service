@@ -1,0 +1,17 @@
+# Chạy bởi smartkey-backup.timer
+
+[Unit]
+Description=Backup Smart Key kiosk_data
+After=local-fs.target
+
+[Service]
+Type=oneshot
+User=pi
+Group=pi
+WorkingDirectory=/home/pi/kiosk
+Environment=KIOSK_DATA_DIR=/home/pi/kiosk/kiosk_data
+Environment=BACKUP_ROOT=/home/pi/kiosk/backups
+ExecStart=/bin/bash /home/pi/smartkey_ops/scripts/backup_kiosk_data.sh
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=smartkey-backup

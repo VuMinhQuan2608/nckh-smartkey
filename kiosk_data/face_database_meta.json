@@ -1,0 +1,37 @@
+{
+  "model_runtime": "deepface",
+  "updated_at": "26/09/2026 18:48:53",
+  "people": {
+    "admin": {
+      "samples": 3,
+      "dims": [
+        128,
+        128,
+        128
+      ],
+      "dim_unique": [
+        128
+      ]
+    },
+    "Vũ Minh Quân": {
+      "samples": 12,
+      "dims": [
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512
+      ],
+      "dim_unique": [
+        512
+      ]
+    }
+  }
+}

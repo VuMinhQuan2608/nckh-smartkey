@@ -1,0 +1,83 @@
+# ============================================================
+# Smart Key Kiosk — copy thành file .env hoặc export trước khi chạy
+# ============================================================
+
+# --- Chế độ ---
+KIOSK_STANDALONE=1
+KIOSK_DATA_DIR=./kiosk_data
+
+# --- Camera upload lên web (0 = tắt, 1 = bật) ---
+USE_SERVER_CAMERA_UPLOAD=0
+SERVER_URL=http://192.168.1.50:5000
+
+# --- GPIO cửa (Raspberry Pi) ---
+RELAY_PIN=17
+# 1 = high de bat relay; 0 = low-trigger (nhieu module relay)
+RELAY_ACTIVE_HIGH=1
+DOOR_SENSOR_PIN=27
+AUTO_LOCK_ENABLED=1
+AUTO_LOCK_SECONDS=90
+
+# --- Face ---
+FACE_MODEL=SFace
+FACE_SIMILARITY=0.38
+FACE_AUTO_UNLOCK=1
+FACE_UNLOCK_COOLDOWN=10
+FACE_INFER_INTERVAL=2.5
+# SFACE_MODEL=./kiosk_data/models/face_recognition_sface_2021dec.onnx
+
+# --- PIN lockout ---
+MAX_PIN_ATTEMPTS=5
+PIN_LOCKOUT_SECONDS=60
+
+# --- Cảnh báo ở lâu trước camera ---
+PROLONGED_ALERT_SECONDS=60
+PROLONGED_ALERT_COOLDOWN=120
+STRANGER_ALERT_COOLDOWN=120
+STRANGER_INSTANT_ALERT=0
+STRANGER_UI_TELEGRAM=1
+
+# --- Telegram (Kiosk riêng) ---
+TELEGRAM_BOT_TOKEN=8887678556:AAF8m4mmBWW29LZYLZbZPhZyBWuJ1-RpUFM
+TELEGRAM_CHAT_IDS=7426389427
+
+# --- MQTT ---
+MQTT_ENABLED=0
+MQTT_BROKER=192.168.1.50
+MQTT_PORT=1883
+MQTT_USER=
+MQTT_PASS=
+MQTT_TOPIC_PREFIX=smartkey
+MQTT_CLIENT_ID_KIOSK=smartkey-kiosk
+MQTT_CLIENT_ID_WEB=smartkey-web
+
+# --- Pin / UPS (tuy chon) ---
+# BATTERY_CAPACITY_PATH=/sys/class/power_supply/BAT0/capacity
+BATTERY_LOW_PERCENT=20
+
+# --- ESP32 API (RFID / van tay / bao chay) ---
+ESP32_API_PORT=5055
+
+# --- Do chinh xac face ---
+FACE_MIN_SIZE=80
+FACE_BLUR_MIN=40
+FACE_MATCH_MARGIN=0.04
+FACE_TOP_K=3
+FACE_QUALITY_CHECK=1
+# FACE_SIMILARITY: SFace ~0.40-0.45 | DeepFace ~0.50-0.55
+
+FACE_FAST=1
+FACE_INFER_INTERVAL=1.0
+FACE_DETECT_MAX_WIDTH=320
+FACE_INFER_MAX_WIDTH=400
+
+# --- Nhieu nguoi truoc camera ---
+FACE_CENTER_ONLY=1
+FACE_CENTER_RATIO=0.55
+FACE_MULTI_WARN=1
+FACE_FRONTAL_ONLY=1
+FACE_FRONTAL_MIN_EYES=0
+
+# Nguong face (SFace): 0.35 de nhan | 0.42-0.48 chat
+FACE_SOFT_GAP=0.06
+FACE_SOFT_CONFIRM=2

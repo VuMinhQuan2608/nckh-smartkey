@@ -1,0 +1,19 @@
+{
+  "admin": {
+    "username": "admin",
+    "password_hash": "scrypt:32768:8:1$nsupEtscjSOQLOv5$31517373cc03d9e9a35d5a0bdee3911cd600a83408daeb2e46aa2c7c82639cd284e4d26e5b8fb122c2ed43cc065a8d32d289025ec7f3e50039eb04783f19954e",
+    "pin_hash": "b510fec6f6bf94c8a020f7b96afcb2e358f91d95cdf818e5846d85c932623ce3",
+    "rfid_uid": "A1B2C3D4",
+    "fingerprint_id": "1",
+    "telegram_chat_id": "7426389427",
+    "role": "admin",
+    "status": "approved",
+    "created_at": "16/09/2026 20:48:40"
+  },
+  "Vũ Minh Quân": {
+    "username": "Vũ Minh Quân",
+    "status": "approved",
+    "role": "member",
+    "created_at": "23/09/2026 22:04:06"
+  }
+}

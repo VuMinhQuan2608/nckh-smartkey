@@ -1,0 +1,16 @@
+[Unit]
+Description=WiFi Connect captive portal (when offline)
+After=NetworkManager.service
+Wants=NetworkManager.service
+# Chỉ chạy nếu chưa có default route / chưa online — wifi-connect tự xử lý
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+# Binary phải tồn tại: /usr/local/bin/wifi-connect
+# Tải từ: https://github.com/balena-io/wifi-connect/releases
+ExecStart=/usr/local/bin/wifi-connect --portal-ssid SmartKey-Setup --portal-listening-port 80
+# oneshot: khi user cấu hình xong, process thoát
+
+[Install]
+WantedBy=multi-user.target

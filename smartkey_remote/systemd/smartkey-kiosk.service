@@ -1,0 +1,24 @@
+[Unit]
+Description=Smart Key Kiosk UI (standalone)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=pi
+Group=pi
+WorkingDirectory=/home/pi/kiosk
+Environment=DISPLAY=:0
+Environment=XAUTHORITY=/home/pi/.Xauthority
+EnvironmentFile=-/home/pi/kiosk/.env
+# Đảm bảo thấy module local
+Environment=PYTHONPATH=/home/pi/kiosk
+ExecStart=/usr/bin/python3 /home/pi/kiosk/kiosk_ui_v8.py
+Restart=on-failure
+RestartSec=5
+# GUI trên Pi desktop / X
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=graphical.target
