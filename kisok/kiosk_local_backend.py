@@ -1904,19 +1904,57 @@ class LocalBackend:
 
     # ===================== MFA =====================
 
+    def _mfa_method_label(self, method: str) -> str:
+        return {
+            "pin": "PIN",
+            "rfid": "RFID",
+            "fingerprint": "Vân tay",
+            "face": "Face ID",
+            "telegram_otp": "Telegram OTP",
+        }.get(method or "", method or "")
+
+    def _mfa_session_view(self, session_id: str, s: dict) -> dict:
+        """Object session đúng format kiosk_ui_v8 mong đợi."""
+        done = s.get("done") or set()
+        methods = list(s.get("methods") or [])
+        remaining = [m for m in methods if m not in done]
+        step_done = len(done)
+        current = remaining[0] if remaining else None
+        return {
+            "mfa_session_id": session_id,
+            "session_id": session_id,
+            "methods": methods,
+            "completed": list(done),
+            "remaining": remaining,
+            "current_method": current,
+            "current_step": step_done + 1 if current else step_done,
+            "total_steps": 2,
+            "next_label": self._mfa_method_label(current) if current else "",
+            "user": s.get("user"),
+        }
+
     def mfa_start(self, methods: list) -> dict:
         methods = [m for m in (methods or []) if m]
         if len(methods) != 2:
-            return {"ok": False, "message": "Chọn đúng 2 phương thức MFA"}
-        # factor types
+            return {
+                "ok": False,
+                "valid": False,
+                "message": "Chọn đúng 2 phương thức MFA",
+            }
         factors = {
-            "telegram_otp": "HAVE", "rfid": "HAVE",
+            "telegram_otp": "HAVE",
+            "rfid": "HAVE",
             "pin": "KNOW",
-            "face": "ARE", "fingerprint": "ARE",
+            "face": "ARE",
+            "fingerprint": "ARE",
         }
         fset = {factors.get(m) for m in methods}
         if None in fset or len(fset) < 2:
-            return {"ok": False, "message": "2 phương thức phải khác nhóm yếu tố (HAVE/KNOW/ARE)"}
+            return {
+                "ok": False,
+                "valid": False,
+                "message": "2 phương thức phải khác nhóm yếu tố (HAVE/KNOW/ARE)",
+            }
         sid = str(uuid.uuid4())
         self._mfa[sid] = {
             "methods": methods,
@@ -1925,12 +1963,17 @@ class LocalBackend:
             "created": time.time(),
             "exp": time.time() + MFA_SESSION_TTL,
         }
+        session = self._mfa_session_view(sid, self._mfa[sid])
         return {
             "ok": True,
+            "valid": True,
             "session_id": sid,
+            "mfa_session_id": sid,
             "methods": methods,
+            "session": session,
             "message": "MFA session started",
         }
+
 
     def mfa_status(self, session_id: str) -> dict:
         s = self._mfa.get(session_id or "")
@@ -2000,15 +2043,31 @@ class LocalBackend:
     def mfa_verify(self, session_id: str, method: str, payload: dict) -> dict:
         s = self._mfa.get(session_id or "")
         if not s:
-            return {"ok": False, "success": False, "message": "Session invalid"}
+            return {"ok": False, "success": False, "mfa_success": False, "message": "Session invalid"}
         if time.time() > s["exp"]:
             self._mfa.pop(session_id, None)
-            return {"ok": False, "success": False, "message": "Session hết hạn"}
+            return {"ok": False, "success": False, "mfa_success": False, "message": "Session hết hạn"}
         method = (method or "").lower()
         if method not in s["methods"]:
-            return {"ok": False, "success": False, "message": f"Method {method} không thuộc session"}
+            return {
+                "ok": False,
+                "success": False,
+                "mfa_success": False,
+                "message": f"Method {method} không thuộc session",
+            }
         if method in s["done"]:
-            return {"ok": True, "success": True, "message": "Đã xác thực method này", "already": True}
+            view = self._mfa_session_view(session_id, s)
+            return {
+                "ok": True,
+                "success": True,
+                "already": True,
+                "mfa_success": len(s["done"]) >= 2,
+                "completed": len(s["done"]) >= 2,
+                "user_name": s.get("user"),
+                "session": view,
+                "next_label": view.get("next_label") or "",
+                "message": "Đã xác thực method này",
+            }
 
         ok = False
         user_name = s.get("user")
@@ -2027,7 +2086,6 @@ class LocalBackend:
             ok = r.get("ok")
             user_name = r.get("user_name") or user_name
         elif method == "face":
-            # UI đã gọi face_recognize; payload có thể có name
             name = payload.get("name") or payload.get("user_name")
             if name and name in self.face_db:
                 ok = True
@@ -2038,19 +2096,36 @@ class LocalBackend:
             else:
                 ok = False
         elif method == "telegram_otp":
-            r = self._verify_otp(payload.get("username") or user_name or "", payload.get("otp") or payload.get("code") or "")
+            r = self._verify_otp(
+                payload.get("username") or user_name or "",
+                payload.get("otp") or payload.get("code") or "",
+            )
             ok = r.get("ok")
             user_name = r.get("user_name") or user_name
         else:
-            return {"ok": False, "success": False, "message": f"Method không hỗ trợ: {method}"}
+            return {
+                "ok": False,
+                "success": False,
+                "mfa_success": False,
+                "message": f"Method không hỗ trợ: {method}",
+            }
 
         if not ok:
             self.add_login_log(user_name or "?", f"mfa/{method}", "THẤT BẠI", "")
-            return {"ok": False, "success": False, "message": f"Xác thực {method} thất bại"}
+            return {
+                "ok": False,
+                "success": False,
+                "mfa_success": False,
+                "message": f"Xác thực {method} thất bại",
+            }
 
-        # Consistency: nếu đã có user, method sau phải cùng user
         if s.get("user") and user_name and s["user"] != user_name:
-            return {"ok": False, "success": False, "message": "Không khớp user của bước MFA trước"}
+            return {
+                "ok": False,
+                "success": False,
+                "mfa_success": False,
+                "message": "Không khớp user của bước MFA trước",
+            }
 
         s["done"].add(method)
         if user_name:
@@ -2058,19 +2133,35 @@ class LocalBackend:
 
         if len(s["done"]) >= 2:
             self.unlock(by=s["user"] or "mfa", method="mfa")
-            self.add_login_log(s["user"] or "?", "mfa", "THÀNH CÔNG", "+".join(sorted(s["done"])))
+            self.add_login_log(
+                s["user"] or "?",
+                "mfa",
+                "THÀNH CÔNG",
+                "+".join(sorted(s["done"])),
+            )
             return {
-                "ok": True, "success": True, "completed": True,
+                "ok": True,
+                "success": True,
+                "completed": True,
+                "mfa_success": True,
                 "user_name": s["user"],
+                "session": self._mfa_session_view(session_id, s),
                 "message": "MFA hoàn tất",
             }
 
+        view = self._mfa_session_view(session_id, s)
         return {
-            "ok": True, "success": True, "completed": False,
+            "ok": True,
+            "success": True,
+            "completed": False,
+            "mfa_success": False,
             "user_name": s.get("user"),
-            "remaining": [m for m in s["methods"] if m not in s["done"]],
+            "remaining": view.get("remaining") or [],
+            "next_label": view.get("next_label") or "",
+            "session": view,
             "message": f"Đã xác thực {method}",
         }
+
 
     def _verify_pin_only(self, pin: str) -> dict:
         pin = (pin or "").strip()
