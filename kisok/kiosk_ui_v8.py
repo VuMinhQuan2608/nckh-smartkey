@@ -91,12 +91,24 @@ KIOSK_FRAME_URL = f"{SERVER_URL}/api/kiosk_frame"
 STATUS_INTERVAL_MS = 1200
 CAMERA_RECONNECT_SECONDS = 2
 
-LOCAL_CAMERA_INDEX = 0
-CAPTURE_WIDTH = 640
-CAPTURE_HEIGHT = 480
+# Camera — ưu tiên Picamera2 (Pi Camera Module V2) → OpenCV USB
+# Xem kiosk_camera.py + .env: CAMERA_BACKEND / CAMERA_WIDTH / CAMERA_HFLIP ...
+LOCAL_CAMERA_INDEX = int(os.environ.get("LOCAL_CAMERA_INDEX", "0"))
+CAPTURE_WIDTH = int(os.environ.get("CAMERA_WIDTH", os.environ.get("CAPTURE_WIDTH", "640")))
+CAPTURE_HEIGHT = int(os.environ.get("CAMERA_HEIGHT", os.environ.get("CAPTURE_HEIGHT", "480")))
 UPLOAD_FPS = 10
 JPEG_QUALITY = 70
 CAMERA_FALLBACK_TO_SERVER = not STANDALONE
+
+try:
+    from kiosk_camera import open_camera as _open_kiosk_camera, camera_info as _camera_info
+    KIOSK_CAMERA_OK = True
+    print(f"[KIOSK] kiosk_camera OK | info={_camera_info()}")
+except Exception as _cam_err:
+    KIOSK_CAMERA_OK = False
+    _open_kiosk_camera = None  # type: ignore
+    _camera_info = None  # type: ignore
+    print(f"[KIOSK] kiosk_camera load fail (dùng OpenCV thuần): {_cam_err}")
 
 TRANSITION_MS = 160
 TRANSITION_FADE_STEPS = 3
@@ -4551,11 +4563,26 @@ class KioskApp:
 
     def _open_local_camera(self):
         """
-        Try local webcam / Pi Camera once per index.
-        Only index LOCAL_CAMERA_INDEX and 0 — avoid probing index 1.
-        Suppresses OpenCV/FFmpeg stderr spam while probing.
+        Mở camera local:
+          1) kiosk_camera (Picamera2 Pi Camera Module V2 → OpenCV USB)
+          2) Fallback OpenCV thuần nếu module không load được
         On failure returns None → worker falls back to server snapshot.
         """
+        # --- Preferred: kiosk_camera (Picamera2 + OpenCV) ---
+        if KIOSK_CAMERA_OK and _open_kiosk_camera is not None:
+            try:
+                cap = _open_kiosk_camera(
+                    width=CAPTURE_WIDTH,
+                    height=CAPTURE_HEIGHT,
+                    index=LOCAL_CAMERA_INDEX,
+                )
+                if cap is not None and cap.isOpened():
+                    print(f"[KIOSK CAM] Backend={getattr(cap, 'get_backend', lambda: '?')()}")
+                    return cap
+            except Exception as e:
+                print(f"[KIOSK CAM] kiosk_camera fail: {e}")
+
+        # --- Legacy OpenCV-only fallback ---
         candidates = []
         for idx in (LOCAL_CAMERA_INDEX, 0):
             if idx not in candidates:
@@ -4568,7 +4595,6 @@ class KioskApp:
             backends.append(cv2.CAP_V4L2)
         backends.append(None)
 
-        # Silence native OpenCV / FFmpeg / DirectShow noise during probe
         devnull = None
         old_stderr = None
         try:
@@ -4607,7 +4633,7 @@ class KioskApp:
                     except Exception:
                         ret = False
                     if ret:
-                        print(f"[KIOSK CAM] Local camera OK index={idx}")
+                        print(f"[KIOSK CAM] OpenCV fallback OK index={idx}")
                         return cap
                     try:
                         cap.release()
@@ -4730,9 +4756,9 @@ class KioskApp:
                 if cap is None:
                     self._queue_camera_message(
                         "Không mở được camera local.\n"
-                        "• Đóng tab web / app đang giữ webcam\n"
-                        "• Rồi chạy lại kiosk_ui_v7.py\n"
-                        "• Server cần frame từ /api/kiosk_frame"
+                        "• Pi Camera V2: cài python3-picamera2 + enable camera\n"
+                        "• USB cam: đóng app đang giữ webcam\n"
+                        "• CAMERA_BACKEND=auto|picamera2|opencv trong .env"
                     )
                     time.sleep(CAMERA_RECONNECT_SECONDS)
                     continue

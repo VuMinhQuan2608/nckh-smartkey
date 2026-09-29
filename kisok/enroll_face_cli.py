@@ -11,6 +11,10 @@ Cach dung tren Pi / PC:
 
 Bam SPACE de chup / enroll, Q de thoat.
 Can enroll 3-5 goc mat (thang, trai, phai) cho moi nguoi.
+
+Camera:
+  - Pi Camera Module V2: dùng Picamera2 (CAMERA_BACKEND=auto|picamera2)
+  - USB webcam: OpenCV (CAMERA_BACKEND=opencv hoặc auto fallback)
 """
 import argparse
 import os
@@ -29,6 +33,16 @@ from kiosk_local_backend import (
     clear_face_db, purge_incompatible_faces, delete_face,
 )
 
+try:
+    from kiosk_camera import open_camera, camera_info
+    HAS_KIOSK_CAM = True
+except Exception as e:
+    HAS_KIOSK_CAM = False
+    open_camera = None  # type: ignore
+    camera_info = None  # type: ignore
+    print(f"[enroll] kiosk_camera không load được: {e} — dùng OpenCV")
+
+
 def show_info():
     info = face_db_info()
     print("=== FACE DATABASE ===")
@@ -41,6 +55,7 @@ def show_info():
     if info.get("hint"):
         print("  !!", info["hint"])
 
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--name", default="")
@@ -48,11 +63,20 @@ def main():
     ap.add_argument("--purge", action="store_true")
     ap.add_argument("--clear", action="store_true")
     ap.add_argument("--delete", default="", help="Xoa 1 nguoi khoi face DB")
-    ap.add_argument("--camera", type=int, default=0)
+    ap.add_argument("--camera", type=int, default=int(os.environ.get("LOCAL_CAMERA_INDEX", "0")))
+    ap.add_argument(
+        "--backend",
+        default=os.environ.get("CAMERA_BACKEND", "auto"),
+        help="auto | picamera2 | opencv",
+    )
     args = ap.parse_args()
 
     if args.info:
         show_info()
+        if HAS_KIOSK_CAM:
+            print("=== CAMERA ===")
+            for k, v in camera_info().items():
+                print(f"  {k}: {v}")
         return
     if args.purge:
         print(purge_incompatible_faces())
@@ -73,10 +97,25 @@ def main():
     print(f"Model: {backend.face.mode}")
     show_info()
     print("SPACE = chup enroll | Q = thoat")
-    cap = cv2.VideoCapture(args.camera)
-    if not cap.isOpened():
-        print("Khong mo duoc camera", args.camera)
-        sys.exit(1)
+
+    cap = None
+    if HAS_KIOSK_CAM and open_camera is not None:
+        try:
+            cap = open_camera(backend=args.backend, index=args.camera)
+            print(f"[enroll] Camera backend: {cap.get_backend()}")
+        except Exception as e:
+            print(f"[enroll] open_camera fail: {e}")
+            cap = None
+
+    if cap is None:
+        # Fallback OpenCV thuần
+        cap = cv2.VideoCapture(args.camera)
+        if not cap.isOpened():
+            print("Khong mo duoc camera", args.camera)
+            print("  Pi Camera V2: sudo apt install -y python3-picamera2")
+            print("  USB: kiểm tra /dev/video* và index --camera")
+            sys.exit(1)
+        print("[enroll] Camera backend: opencv (fallback)")
 
     count_ok = 0
     while True:
@@ -100,6 +139,7 @@ def main():
     cv2.destroyAllWindows()
     print("Done. Tong mau moi session:", count_ok)
     show_info()
+
 
 if __name__ == "__main__":
     main()
